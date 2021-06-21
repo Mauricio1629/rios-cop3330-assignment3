@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Application{
+    text: String
+    revisedText: String
+    +printRevisedText()
+}
+
+class textManipulation{
+    +readInput()
+    +findUse()
+}
+
+class readInput{
+    Reads txt file and converts to string
+    output: String text
+}
+
+class findUse{
+    compare "utilize" within string and replace with use
+    input: String text
+    output: String revisedText
+}
+
+class printRevisedText{
+    print to new txt file
+    input: String revisedText
+    output: void
+}
+
+textManipulation<-- readInput
+textManipulation <--findUse
+Application <-- printRevisedText
+Application <|-- textManipulation
+
+@enduml

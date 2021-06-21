@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class main{
+    names: List<String>
+    sortedNames: List<String>
+    nameCount: int
+    output: StringBuilder
+    +readFileNames()
+    +generateOutputFromSortedNames()
+    +printOutput()
+}
+
+class readFileNames{
+    Reads input.txt within the method
+    output: List<String> names
+}
+
+class generateOutputFromSortedNames{
+    input: List<String> names, int namesCount
+    output: String output
+}
+
+class printOutput{
+    input: String output
+    output : void
+}
+
+class fileNames{
+    +sortFileNames()
+    +countFileNames()
+}
+
+class sortFileNames{
+    input: List<String> names
+    output : List<String> sortedNames
+}
+class countFileNames{
+    input: List<String> names
+    output: int namesCount
+}
+
+main <|- fileNames
+fileNames <-- sortFileNames
+fileNames <-- countFileNames
+main <-- readFileNames
+main <-- generateOutputFromSortedNames
+main <-- printOutput
+
+
+@enduml

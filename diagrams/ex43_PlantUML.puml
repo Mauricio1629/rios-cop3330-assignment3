@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Application {
+    websiteName: String
+    concat: StringBuilder
+    authorName: String
+    jsAnswer: String
+    cssAnswer: String
+    output: String
+    +getAnswer()
+    +generateOutput()
+}
+
+class website {
+    +createDir()
+    +createHTML()
+    +createJSFolder()
+    +createCSSFolder()
+}
+
+class getAnswer{
+    input: String prompt
+    output:String website/authorName
+}
+
+class generateOutput{
+    input: String output
+    output: void
+}
+
+class createDir{
+    input: String websiteName
+    output: StringBuilder concat
+}
+
+class createHTML {
+    input: StringBuilder concat, String websiteName, String authorName
+    output: StringBuilder concat
+}
+
+class createJSFolder {
+    input: StringBuilder concat, String jsAnswer, String websiteName
+    output: StringBuilder concat
+}
+
+class createCSSFolder{
+    input:  StringBuilder concat, String cssAnswer, String websiteName
+    output: StringBuilder concat
+}
+
+Application <|--website
+Application <-- getAnswer
+Application <-- generateOutput
+website <-- createDir
+website <-- createHTML
+website <-- createJSFolder
+website <-- createCSSFolder
+
+@enduml

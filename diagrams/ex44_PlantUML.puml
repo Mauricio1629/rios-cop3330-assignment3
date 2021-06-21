@@ -1,0 +1,56 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Application {
+    productsList: List<Products>
+    search: String
+    output: String
+
+    +loadFiles()
+    +getSearch()
+    +matchSearch()
+    +printOutput()
+}
+
+class loadFiles{
+    input: file input
+    output: List<Products> productsList
+}
+
+class getSearch{
+    input: prompt user for input
+    output: String search
+}
+
+class matchSearch{
+    input: List<Products> productsList, String search
+    output: String output
+}
+
+class printOutput{
+    input: String output
+    output: void
+}
+
+class Products {
+    name: String
+    price: Double
+    quantity: Integer
+
+    +getName()
+    +setName()
+    +getPrice()
+    +setPrice()
+    +getQuantity()
+    +setQuantity()
+    +toString()
+}
+
+
+Application <|-- Products
+Application <--loadFiles
+Application <-- getSearch
+Application <-- matchSearch
+Application <-- printOutput
+
+@enduml

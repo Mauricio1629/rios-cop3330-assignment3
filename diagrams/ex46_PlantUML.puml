@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Application{
+    text: String
+    wordCount: Map<String,String>
+    histogram: String
+    +printOutput()
+}
+
+class stringManipulation{
+    +readFile()
+    +getFrequencyAmount()
+    +createHistogram()
+}
+
+class readFile{
+    reads the input file
+    output: String text
+
+}
+class createHistogram{
+    input: Map<String,Integer>
+    output: String
+}
+
+class printOutput{
+    input: String
+    output: void
+}
+
+
+class getFrequencyAmount{
+    input: String text
+    output: Map<String,Integer>
+}
+Application <|-- stringManipulation
+stringManipulation <- readFile
+stringManipulation <-- getFrequencyAmount
+stringManipulation <-- createHistogram
+Application <-- printOutput
+
+@enduml
